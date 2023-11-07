@@ -1,0 +1,6 @@
+test_cases_dir_path: ../tck/TestCases
+file_search_pattern: compliance-level
+evaluate_url: http://127.0.0.1:22022/tck
+report_file: output/results_compliance.csv
+tck_report_file: output/tck_results_compliance.csv
+stop_on_failure: false

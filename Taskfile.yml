@@ -1,0 +1,65 @@
+version: '3'
+
+silent: true
+
+tasks:
+
+  all:
+    desc: Runs tests configured in config-all.yml 
+    cmds:
+      - cmd: cargo +stable run -- config-all.yml
+
+  build:
+    desc: Builds in debug mode
+    cmds:
+      - cmd: cargo +stable build
+
+  clean:
+    desc: Cleans all targets
+    cmds:
+      - cmd: cargo clean
+
+  clippy:
+    desc: Runs clippy for all targets
+    cmds:
+      - cmd: cargo +stable clippy
+  
+  clippy-all:
+    desc: Runs clippy for all targets
+    cmds:
+      - cmd: cargo +nightly clippy --all-targets
+
+  compliance:
+    desc: Runs tests configured in config-compliance.yml
+    cmds:
+      - cmd: cargo +stable run -- config-compliance.yml
+
+  debug:
+    desc: Runs tests configured in config-debug.yml
+    cmds:
+      - cmd: cargo +stable run -- config-debug.yml
+
+  doc:
+    desc: Generates documentation
+    cmds:
+      - cmd: cargo +stable doc --no-deps --document-private-items
+
+  doc-open:
+    desc: Generates documentation and opens it in browser
+    cmds:
+      - cmd: cargo +stable doc --no-deps --open --document-private-items
+        
+  musl:
+    desc: Builds the Linux MUSL target
+    cmds:
+      - cmd: cargo +stable build --release --target=x86_64-unknown-linux-musl
+
+  test:
+    desc: Runs tests in debug mode
+    cmds:
+      - cmd: cargo +nightly test
+        
+  fmt:
+    desc: Runs code formatter
+    cmds:
+      - cmd: cargo +nightly fmt
