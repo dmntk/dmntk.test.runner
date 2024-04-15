@@ -61,7 +61,7 @@ impl<T> ToString for ResultDto<T> {
       .errors
       .as_ref()
       .map(|v| v.iter().map(|e| e.detail.clone()).collect::<Vec<String>>().join(", "))
-      .unwrap_or_else(|| "".to_string())
+      .unwrap_or_default()
   }
 }
 
