@@ -114,7 +114,6 @@ impl Context {
     }
   }
 
-  ///
   pub fn process_model_definitions(&mut self, root_dir_path: &Path, dir_name: &str, file_name: &str) {
     let file_path = Path::new(dir_name).join(Path::new(file_name));
     let content = fs::read_to_string(&file_path).unwrap();
@@ -130,22 +129,18 @@ impl Context {
     self.workspace_names.insert(file_name.to_string(), workspace_name(root_dir_path, &file_path));
   }
 
-  ///
   pub fn get_model_name(&self, file_name: &str) -> String {
     self.model_names.get(file_name).cloned().expect("model name not found for specified file name")
   }
 
-  ///
   pub fn get_workspace_name(&self, file_name: &str) -> String {
     self.workspace_names.get(file_name).cloned().expect("workspace name not found for specified file name")
   }
 
-  ///
   pub fn get_model_rdnn(&self, file_name: &str) -> String {
     self.model_rdnns.get(file_name).cloned().expect("model RDNN not found for specified file name")
   }
 
-  ///
   pub fn write_line(&mut self, test_file_name: &str, test_case_id: &str, test_id: &str, test_result: TestResult, remarks: &str) {
     let test_file_directory = dir_name_stripped_prefix(&dir_name(test_file_name), &self.root_dir_path);
     let test_file_stem = file_stem(test_file_name);
@@ -181,7 +176,6 @@ impl Context {
     }
   }
 
-  ///
   pub fn display_test_cases_report(&mut self) {
     let mut total = self.test_case_success.clone();
     total.extend(self.test_case_failure.keys().cloned().collect::<HashSet<(String, String, String)>>());

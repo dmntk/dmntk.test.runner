@@ -100,7 +100,6 @@ pub struct SimpleDto {
 }
 
 impl PartialEq for SimpleDto {
-  ///
   fn eq(&self, rhs: &Self) -> bool {
     // if self.typ.is_some()
     //   && rhs.typ.is_some()
