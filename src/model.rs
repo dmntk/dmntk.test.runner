@@ -269,7 +269,7 @@ fn parse_result_nodes(node: &Node) -> Vec<ResultNode> {
   for ref result_node in node.children().filter(|n| n.tag_name().name() == NODE_RESULT_NODE) {
     items.push(ResultNode {
       name: required_attribute(result_node, ATTR_NAME),
-      error_result: optional_attribute(result_node, ATTR_ERROR_RESULT).map_or(false, |v| v == "true"),
+      error_result: optional_attribute(result_node, ATTR_ERROR_RESULT).is_some_and( |v| v == "true"),
       typ: optional_attribute(result_node, ATTR_TYPE).into(),
       cast: optional_attribute(result_node, ATTR_CAST),
       expected: parse_child_value_type(result_node, NODE_EXPECTED),
@@ -374,7 +374,7 @@ fn optional_xsi_type_attribute(node: &Node) -> Option<String> {
 
 /// XML utility function that returns `true` when `xsi:nil="true"` attribute is specified.
 fn optional_nil_attribute(node: &Node) -> bool {
-  node.attribute((XSI, ATTR_NIL)).map_or(false, |v| v == "true")
+  node.attribute((XSI, ATTR_NIL))== Some("true")
 }
 
 /// XML utility function that returns required textual content from the specified node.

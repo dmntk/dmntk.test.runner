@@ -153,10 +153,10 @@ fn execute_tests(ctx: &mut Context, file_path: &str, client: &Client, evaluate_u
       );
       print!("{} {} ", text, &GAP[..GUTTER - test_case_details.len()]);
       let invocable_path = format!(
-        "{}{}/{}/{}",
+        "{}{}/{}",
         if workspace_name.is_empty() { "".to_string() } else { format!("{}/", workspace_name) },
         model_namespace,
-        model_name,
+        //model_name,
         invocable_name
       );
       let params = EvaluateParams {
